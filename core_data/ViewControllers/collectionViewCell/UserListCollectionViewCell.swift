@@ -20,15 +20,11 @@ class UserListCollectionViewCell: UICollectionViewCell {
     
     func configCell(user: UserModel?){
         
-        if let email = user?.email{
-            emailLabel.text = email
-        } 
-        if let username = user?.username{
-            userNameLabel.text = username
-        }
-        if let password = user?.password{
-            passwordLabel.text = password
-        }
+//        if let email = user?.email, let username = user?.username, let password = user?.password{
+        userNameLabel.text = user?.email ?? ""
+        emailLabel.text = user?.email ?? ""
+        passwordLabel.text = user?.password ?? ""
+//        }
         
        
     }

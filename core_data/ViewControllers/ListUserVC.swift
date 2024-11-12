@@ -37,12 +37,7 @@ class ListUserVC: UIViewController {
     
     func convertTOUserModel(userDict: [[String: Any?]]) -> [UserModel]?{
         do{
-            // Remove any `nil` values from the dictionary
-               let cleanedUserDict = userDict.map { dict in
-                   dict.compactMapValues { $0 }
-               }
-            
-            let json = try JSONSerialization.data(withJSONObject: cleanedUserDict, options: [])
+            let json = try JSONSerialization.data(withJSONObject: userDict, options: [])
             let decoder = JSONDecoder()
             decoder.keyDecodingStrategy = .convertFromSnakeCase
             let decodedUser = try decoder.decode([UserModel].self, from: json)
@@ -80,6 +75,7 @@ extension ListUserVC: UICollectionViewDelegate, UICollectionViewDataSource{
         if let usr = users{
             if !usr.isEmpty{
                 guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "UserListCollectionViewCell", for: indexPath) as? UserListCollectionViewCell else {return UICollectionViewCell()}
+                
                 cell.configCell(user: usr[indexPath.row])
                 return cell
             }
