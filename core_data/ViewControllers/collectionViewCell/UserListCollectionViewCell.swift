@@ -19,14 +19,16 @@ class UserListCollectionViewCell: UICollectionViewCell {
     }
     
     func configCell(user: UserModel?){
-        
-//        if let email = user?.email, let username = user?.username, let password = user?.password{
         userNameLabel.text = user?.email ?? ""
         emailLabel.text = user?.email ?? ""
         passwordLabel.text = user?.password ?? ""
-//        }
-        
-       
     }
-
+    
+    @IBAction func editAction(_ sender: Any) {
+        
+    }
+    
+    @IBAction func deleteAction(_ sender: Any) {
+        
+    }
 }

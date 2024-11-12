@@ -24,8 +24,11 @@ class ListUserVC: UIViewController {
     func initializeCollectionView(){
         collectionView.delegate = self
         collectionView.dataSource = self
+        let nib = UINib(nibName: "UserListCollectionViewCell", bundle: nil)
         
-        collectionView.register(UserListCollectionViewCell.self, forCellWithReuseIdentifier: "UserListCollectionViewCell")
+        collectionView.register(nib, forCellWithReuseIdentifier: "UserListCollectionViewCell")
+        // Invalidate layout to ensure it applies the custom cell size
+        collectionView.collectionViewLayout = UICollectionViewFlowLayout()
     }
     
     func fetchFromCoreData(){
@@ -62,7 +65,7 @@ class ListUserVC: UIViewController {
 
 }
 
-extension ListUserVC: UICollectionViewDelegate, UICollectionViewDataSource{
+extension ListUserVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let usr = self.users{
             return usr.count
@@ -84,9 +87,8 @@ extension ListUserVC: UICollectionViewDelegate, UICollectionViewDataSource{
        return UICollectionViewCell()
     }
     
-
-    
-
-    
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size = (collectionView.frame.width/2) - 10
+        return CGSize(width: size, height: size+20)
+    }
 }

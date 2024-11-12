@@ -6,7 +6,7 @@
 //
 
 import Foundation
-import Alamofire
+//import Alamofire
 enum ApiError: Error{
     case invalidResponse
     case failiure
