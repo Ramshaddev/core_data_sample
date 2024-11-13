@@ -30,10 +30,19 @@ class HomeVC: UIViewController {
     }
     
     @IBAction func showHomeAction(_ sender: Any) {
-//        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
-//        let vc = storyboard.instantiateViewController(withIdentifier: "ProductHomeViewController") as? ProductHomeViewController
-//        self.present(vc!, animated: true)
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "ProductHomeViewController") as? ProductHomeViewController
+        vc?.modalPresentationStyle = .fullScreen
+        self.present(vc!, animated: true)
     }
+    
+    @IBAction func showTodoList(_ sender: Any) {
+        let storyboard = UIStoryboard.init(name: "Main", bundle: nil)
+        let vc = storyboard.instantiateViewController(withIdentifier: "TodoListViewController") as? TodoListViewController
+        vc?.modalPresentationStyle = .fullScreen
+        self.present(vc!, animated: true)
+    }
+    
     /*
     // MARK: - Navigation
 

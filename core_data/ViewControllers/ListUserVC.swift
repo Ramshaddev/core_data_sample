@@ -89,6 +89,14 @@ extension ListUserVC: UICollectionViewDelegate, UICollectionViewDataSource, UICo
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         let size = (collectionView.frame.width/2) - 10
-        return CGSize(width: size, height: size+20)
+        return CGSize(width: size, height: size+30)
     }
+}
+
+extension ListUserVC: UserCellDelegate{
+    func didTapDelete() {
+        self.collectionView.reloadData()
+    }
+    
+    
 }
